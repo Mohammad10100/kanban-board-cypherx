@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { PiMoonFill } from "react-icons/pi";
 import { MdSunny } from "react-icons/md";
 import { GiSettingsKnobs } from "react-icons/gi";
@@ -20,19 +20,32 @@ export default function Navbar() {
   const setDropDown = ()=>{
     setDisplayOptions(!displayOptions);
   }
-  const hideDropDown = ()=>{
-    console.log('blurr');
-    setDisplayOptions(false);
-  }
+  // const hideDropDown = ()=>{
+  //   console.log('blurr');
+  //   setDisplayOptions(false);
+  // }
+  const ref = useRef()
+  useEffect(() => {
+    const checkIfClickedOutside = e => {
+      if (displayOptions && ref.current && !ref.current.contains(e.target)) {
+        setDisplayOptions(false)
+      }
+    }
+    document.addEventListener("mousedown", checkIfClickedOutside)
+    return () => {
+      document.removeEventListener("mousedown", checkIfClickedOutside)
+    }
+
+  }, [displayOptions])
 
   return (
     <div className={`flex justify-center ` + theme.colors.primary}>
       <nav className={`navbar flex justify-between w-[97%] h-[8vh] items-center `}>
 
-        <div className=' relative'>
+        <div className=' relative' ref={ref}>
 
           {/* Button  */}
-          <div className={`display flex items-center justify-between gap-[0.7rem] px-1 border-2 rounded-lg shadow-md `+theme.colors.border_color} onClick={setDropDown}>
+          <div className={`display flex items-center justify-between gap-[0.7rem] px-1 border-2 rounded-lg shadow-md `+theme.colors.border_color} onClick={setDropDown} >
             <GiSettingsKnobs className='  rotate-90' />
             <p className='  text-md'>Display</p>
             <MdKeyboardArrowDown />
