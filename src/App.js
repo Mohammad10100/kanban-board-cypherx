@@ -6,11 +6,12 @@ import { ThemeProvider } from 'styled-components';
 
 const lightTheme = {
   colors: {
-    primary: '#ffff',
-    bg: '#F4F5F8',
+    primary: 'bg-[#ffff]',
+    bg: 'bg-[#F4F5F8]',
     text: 'text-black',
-    text_secondary: 'text-grey',
+    text_secondary: 'text-gray-400',
     grey: '#aaa',
+    border_color:'border-[#e6e7eb]',
   },
   fontSize: '16px',
   name:'light',
@@ -23,6 +24,7 @@ const darkTheme = {
     text: 'text-white',
     text_secondary: 'text-gray-400',
     grey: '#555',
+    border_color:'border-[#4a4a4a;]',
   },
   fontSize: '16px',
   name:'dark',
