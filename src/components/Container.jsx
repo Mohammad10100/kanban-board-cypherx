@@ -9,7 +9,6 @@ export default function Container() {
   return (
     <>
       <div className={`section ` + theme.colors.text}>
-        {console.log(theme.colors.text)}
       <Navbar></Navbar>
       <Main></Main>
       <></>

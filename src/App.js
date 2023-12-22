@@ -1,3 +1,4 @@
+import { useSelector } from 'react-redux';
 import './App.css';
 import Container from './components/Container';
 import React, { useState } from "react";
@@ -29,10 +30,10 @@ const darkTheme = {
 
 
 function App() {
-  const [darkMode, SetDarkMode] = useState(1);
+  const ThemeValue = useSelector(state => state.theme.theme);
 
   return (
-    <ThemeProvider theme={darkMode?darkTheme:lightTheme}>
+    <ThemeProvider theme={ThemeValue=='dark'?darkTheme:lightTheme}>
       <Container></Container>
     </ThemeProvider>
   );

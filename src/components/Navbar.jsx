@@ -4,13 +4,20 @@ import { MdSunny } from "react-icons/md";
 import { GiSettingsKnobs } from "react-icons/gi";
 import { MdKeyboardArrowDown } from "react-icons/md";
 import { useTheme } from 'styled-components';
+import { useSelector, useDispatch } from 'react-redux'
+import { setTheme } from '../slices/themeSlice'
 
 export default function Navbar() {
   const theme = useTheme()
+  
+  const ThemeValue = useSelector(state => state.theme.theme);
+  const dispatch = useDispatch()
+  const changeTheme = ()=>{
+    ThemeValue == 'dark'?dispatch(setTheme('light')):dispatch(setTheme('dark'));
+  }
 
   return (
     <div className={`flex justify-center ` + theme.colors.primary}>
-      {console.log(theme.name)}
       <nav className={`navbar flex justify-between w-[97%] h-[8vh] items-center `}>
 
         <div className=' relative'>
@@ -49,7 +56,7 @@ export default function Navbar() {
           </div>
         </div>
 
-        <div className="theme flex">
+        <div className="theme flex" onClick={changeTheme}>
           {theme.name == 'light' ? <PiMoonFill /> : <MdSunny />}
         </div>
       </nav>
