@@ -9,7 +9,8 @@ import { setTheme } from '../slices/themeSlice'
 
 export default function Navbar() {
   const theme = useTheme()
-  
+  const [rotation, setRotation] = useState('rotate-0');
+
   const ThemeValue = useSelector(state => state.theme.theme);
   const dispatch = useDispatch()
   const changeTheme = ()=>{
@@ -19,11 +20,9 @@ export default function Navbar() {
   const [displayOptions, setDisplayOptions] = useState(false);
   const setDropDown = ()=>{
     setDisplayOptions(!displayOptions);
+    displayOptions?setRotation(`rotate-0`):setRotation(`rotate-180`);
   }
-  // const hideDropDown = ()=>{
-  //   console.log('blurr');
-  //   setDisplayOptions(false);
-  // }
+
   const ref = useRef()
   useEffect(() => {
     const checkIfClickedOutside = e => {
@@ -48,7 +47,7 @@ export default function Navbar() {
           <div className={`display flex items-center justify-between gap-[0.7rem] px-1 border-2 rounded-lg shadow-md `+theme.colors.border_color} onClick={setDropDown} >
             <GiSettingsKnobs className='  rotate-90' />
             <p className='  text-md'>Display</p>
-            <MdKeyboardArrowDown />
+            <MdKeyboardArrowDown className={rotation+ ` ease-in-out duration-200 `}/>
           </div>
 
           {/* /DropDown */}
