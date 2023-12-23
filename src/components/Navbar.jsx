@@ -42,6 +42,7 @@ export default function Navbar() {
     const checkIfClickedOutside = e => {
       if (displayOptions && ref.current && !ref.current.contains(e.target)) {
         setDisplayOptions(false)
+        setRotation(`rotate-0`)
       }
     }
     document.addEventListener("mousedown", checkIfClickedOutside)

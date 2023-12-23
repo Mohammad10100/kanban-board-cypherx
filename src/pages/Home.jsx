@@ -1,6 +1,6 @@
 import React from 'react'
-import Navbar from './Navbar'
-import Main from './Main';
+import Navbar from '../components/Navbar'
+import Main from '../components/Main';
 import { useTheme } from 'styled-components';
 
 export default function Container() {
