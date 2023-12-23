@@ -8,9 +8,11 @@ export default function Container() {
 
   return (
     <>
-      <div className={`section ` + theme.colors.text}>
+      <div className={`section w-[full] `+theme.colors.bg+ ' ' + theme.colors.text}>
       <Navbar></Navbar>
-      <Main></Main>
+      <div className=" flex items-center justify-center ">
+        <Main></Main>
+      </div>
       <></>
       </div>
     </>

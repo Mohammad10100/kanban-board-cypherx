@@ -9,7 +9,7 @@ import { useTheme } from 'styled-components';
 export default function Priority({priority}) {
     const theme = useTheme()
 
-    console.log(theme.colors.textc);
+
 
     const returnIcon = ()=> {
         switch (priority) {
